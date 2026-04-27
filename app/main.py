@@ -16,7 +16,6 @@ from app.schemas.user import UserCreate
 from app.schemas.user import UserLogin
 from app.schemas.user import UserResponse
 
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
 
@@ -53,6 +52,10 @@ def login_page(request: Request):
 @app.get('/register', response_class=HTMLResponse, tags=['web'])
 def register_page(request: Request):
     return templates.TemplateResponse('register.html', {'request': request})
+
+@app.get('/dashboard', response_class=HTMLResponse, tags=['web'])
+def dashboard_page(request: Request):
+    return templates.TemplateResponse('dashboard.html', {'request': request})
 
 # Health endpoint
 @app.get('/health', tags=['health'])
