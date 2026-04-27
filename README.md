@@ -38,6 +38,10 @@ docker compose down -v
 docker compose up --build
 ```
 
+## Access the app in browser
+
+Go to: http://localhost:8000/
+
 ## Run test cases locally (including Playwright and route testing)
 
 In second WSL/VS Code Terminal:
