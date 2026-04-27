@@ -38,7 +38,7 @@ docker compose down -v
 docker compose up --build
 ```
 
-## Run test cases locally
+## Run test cases locally (including Playwright and route testing)
 
 In second WSL/VS Code Terminal:
 ```bash
