@@ -17,7 +17,7 @@ jobs:
         env:
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          POSTGRES_DB: mytestdb
+          POSTGRES_DB: fastapi_db
         ports:
           - 5432:5432
         options: >-
@@ -44,7 +44,7 @@ jobs:
 
       - name: Install dependencies
         env:
-          DATABASE_URL: postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/mytestdb
+          DATABASE_URL: postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/fastapi_db
         run: |
           python -m venv venv
           source venv/bin/activate
@@ -54,7 +54,7 @@ jobs:
 
       - name: Run tests
         env:
-          DATABASE_URL: postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/mytestdb
+          DATABASE_URL: postgresql://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/fastapi_db
         run: |
           source venv/bin/activate
           pytest --cov=src --junitxml=test-results/junit.xml
