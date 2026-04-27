@@ -72,10 +72,6 @@ def setup_test_database(request):
 
     yield
 
-    if not request.config.getoption('--preserve-db'):
-        logger.info('Dropping test database tables...')
-        drop_db(test_engine)
-
 @pytest.fixture
 def db_session() -> Generator[Session, None, None]:
 
@@ -237,11 +233,9 @@ def pytest_addoption(parser):
 
     '''
     Add custom command line options:
-      --preserve-db : Keep test database after tests
       --run-slow     : Run tests marked as 'slow'
     '''
 
-    parser.addoption('--preserve-db', action='store_true', help='Keep test database after tests')
     parser.addoption('--run-slow', action='store_true', help='Run tests marked as slow')
 
 def pytest_collection_modifyitems(config, items):
