@@ -140,6 +140,14 @@ def test_register_page():
     assert response.status_code == 200
     assert 'Create Account' in response.text
 
+def test_dashboard_page():
+
+    # Test dashboard page
+
+    response = client.get('/dashboard')
+    assert response.status_code == 200
+    assert 'Calculations Dashboard' in response.text
+
 def test_user_registration_fail():
 
     # Test failure to register

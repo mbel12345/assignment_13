@@ -27,6 +27,7 @@ In WSL/VS Code Terminal:
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+playwright install
 ```
 
 ## Build image and start container
