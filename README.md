@@ -44,6 +44,12 @@ In second WSL/VS Code Terminal:
 pytest
 ```
 
+## Run FastAPI app locally
+In WSL/VS Code Terminal:
+```bash
+uvicorn app.main:app --reload --host 127.0.0.1 --port 8001
+```
+
 ## Configure Github Actions
 Github Actions will run on any pushes or pull requests. Only pull requests will result in the deployment step.
 Pre-requisite: In Dockerhub, create an Access Token, then add it to Environment var "DOCKERHUB_TOKEN" in GitHub. Add DOCKERHUB_USERNAME also.
