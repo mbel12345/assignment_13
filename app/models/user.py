@@ -4,13 +4,14 @@ from datetime import datetime, timedelta, timezone
 from jose import jwt, JWTError
 from sqlalchemy import Boolean, Column, DateTime, func, or_, String
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.orm import declared_attr, mapped_column
+from sqlalchemy.orm import declared_attr, mapped_column, relationship
 
 from app.auth.jwt import create_token
 from app.auth.jwt import get_password_hash
 from app.auth.jwt import verify_password
 from app.core.config import settings
 from app.database import Base
+from app.models.calculation import Calculation
 from app.schemas.token import TokenType
 
 def utcnow():
@@ -119,6 +120,8 @@ class User(Base):
             DateTime(timezone=True),
             nullable=True,
         )
+
+    calculations = relationship('Calculation', back_populates='user', cascade='all, delete-orphan')
 
     def __init__(self, *args, **kwargs):
 
